@@ -35,7 +35,7 @@ const jobSchema = new mongoose.Schema({
         formattedAddress: String,
         city: String,
         state: String,
-        zipCode: String,
+        zipcode: String,
         country: String
     },
 
@@ -49,7 +49,7 @@ const jobSchema = new mongoose.Schema({
     },
     industry: {
         type: [String],
-        required: true,
+        required: [true, 'Please enter industry for this job'],
         enum: {
             values: ['Busines', 'Information Technology', 'Banking', 'Education/training', 'Telecomunication', 'Others'],
             message: 'Please select correct options for industry'
@@ -58,7 +58,7 @@ const jobSchema = new mongoose.Schema({
 
     jobType: {
         type: String,
-        required: true,
+        required: [true, 'Please enter job type'],
         enum: {
             values: [
                 'Permanent',
@@ -70,7 +70,7 @@ const jobSchema = new mongoose.Schema({
     },
     minEducation: {
         type: String,
-        required: true,
+        required: [true, 'Please enter education level'],
         enum: {
             values: [
                 'Bachelors',
@@ -87,7 +87,7 @@ const jobSchema = new mongoose.Schema({
 
     experience: {
         type: String,
-        required: true,
+        required: [true, 'Please enter experience required for this job'],
         enum: [
             'No experience',
             '1 Year - 2 years',
@@ -112,6 +112,11 @@ const jobSchema = new mongoose.Schema({
     applicantsApplied: {
         type: [Object],
         select: false
+    },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true
     }
 })
 
