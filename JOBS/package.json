@@ -2,7 +2,7 @@
   "name": "jobs",
   "version": "1.0.0",
   "description": "this api is about jobs",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "start": "SET NODE_ENV=production & node app.js",
     "dev": "nodemon app"
