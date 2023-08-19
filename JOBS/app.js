@@ -25,7 +25,7 @@ process.on('uncaughtException', err => {
 })
 
 //Connecting to db
-//connectDatabase();
+connectDatabase();
 
 
 //Setup secutity headers
@@ -93,8 +93,8 @@ process.on("unhandledRjection", err => {
 });
 
 //Connect to the database before listening
-connectDatabase().then(() => {
-    app.listen(PORT, () => {
-        console.log("listening for requests");
-    })
-})
+// connectDatabase().then(() => {
+//     app.listen(PORT, () => {
+//         console.log("listening for requests");
+//     })
+// })
