@@ -12,7 +12,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xssClean = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors')
-//const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 //Setting un config.env file variables
 dotenv.config({ path: './config/config.env' });
@@ -27,6 +27,10 @@ process.on('uncaughtException', err => {
 //Connecting to db
 connectDatabase();
 
+//Setup body parser
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(express.static('public'))
 
 //Setup secutity headers
 app.use(helmet())
@@ -62,8 +66,6 @@ app.use(cors())
 const jobs = require('./routes/jobs');
 const auth = require('./routes/auth');
 const user = require('./routes/user');
-
-
 
 app.use('/api/v1', jobs);
 app.use('/api/v1', auth);
